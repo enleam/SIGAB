@@ -1,5 +1,5 @@
 /* ============================================================
-   SIGAB - Sistema Integrado de Gesti髇 y Asignaci髇 de Bolsistas
+   SIGAB - Sistema Integrado de Gesti贸n y Asignaci贸n de Bolsistas
    ============================================================ */
 
 IF DB_ID(N'SIGAB') IS NULL
@@ -53,11 +53,30 @@ GO
 
 
 /* ============================================================
-   1. ESTRUCTURA ACAD蒑ICA
+   1. ESTRUCTURA ACAD脡MICA
    ============================================================ */
+
+CREATE TABLE academico.AreaAcademica (
+    id                  TINYINT IDENTITY(1,1) NOT NULL,
+    codigo              CHAR(1) NOT NULL,
+    nombre              NVARCHAR(100) NOT NULL,
+    activo              BIT NOT NULL CONSTRAINT DF_AreaAcademica_Activo DEFAULT (1),
+    creado_en           DATETIME2(0) NOT NULL CONSTRAINT DF_AreaAcademica_Creado DEFAULT (SYSDATETIME()),
+    actualizado_en      DATETIME2(0) NOT NULL CONSTRAINT DF_AreaAcademica_Actualizado DEFAULT (SYSDATETIME()),
+
+    CONSTRAINT PK_AreaAcademica PRIMARY KEY (id),
+    CONSTRAINT UQ_AreaAcademica_Codigo UNIQUE (codigo),
+    CONSTRAINT UQ_AreaAcademica_Nombre UNIQUE (nombre),
+
+    CONSTRAINT CK_AreaAcademica_Codigo CHECK (
+        codigo IN ('A', 'B', 'C', 'D', 'E')
+    )
+);
+GO
 
 CREATE TABLE academico.Facultad (
     id                  BIGINT IDENTITY(1,1) NOT NULL,
+    area_academica_id   TINYINT NOT NULL,
     codigo              VARCHAR(20) NOT NULL,
     nombre              NVARCHAR(150) NOT NULL,
     activo              BIT NOT NULL CONSTRAINT DF_Facultad_Activo DEFAULT (1),
@@ -66,7 +85,11 @@ CREATE TABLE academico.Facultad (
 
     CONSTRAINT PK_Facultad PRIMARY KEY (id),
     CONSTRAINT UQ_Facultad_Codigo UNIQUE (codigo),
-    CONSTRAINT UQ_Facultad_Nombre UNIQUE (nombre)
+    CONSTRAINT UQ_Facultad_Nombre UNIQUE (nombre),
+
+    CONSTRAINT FK_Facultad_AreaAcademica
+        FOREIGN KEY (area_academica_id)
+        REFERENCES academico.AreaAcademica(id)
 );
 GO
 
@@ -137,7 +160,7 @@ GO
 
 
 /* ============================================================
-   3. SEGURIDAD Y AUTENTICACI覰
+   3. SEGURIDAD Y AUTENTICACI脫N
    ============================================================ */
 
 CREATE TABLE seguridad.Usuario (
@@ -277,7 +300,7 @@ GO
 
 
 /* ============================================================
-   5. MATR虲ULA
+   5. MATR脥CULA
    ============================================================ */
 
 CREATE TABLE academico.MatriculaEstudiante (
@@ -654,7 +677,7 @@ GO
 
 
 /* ============================================================
-   9. IA - ANONIMIZACI覰
+   9. IA - ANONIMIZACI脫N
    ============================================================ */
 
 CREATE TABLE ia.AnonimizacionCV (
@@ -715,7 +738,7 @@ GO
 
 
 /* ============================================================
-   10. MODERACI覰 DE CONVOCATORIAS
+   10. MODERACI脫N DE CONVOCATORIAS
    ============================================================ */
 
 CREATE TABLE convocatorias.ModeracionConvocatoria (
@@ -842,7 +865,7 @@ GO
 
 
 /* ============================================================
-   12. AUDITOR虯
+   12. AUDITOR脥A
    ============================================================ */
 
 CREATE TABLE seguridad.AuditoriaEvento (
@@ -888,6 +911,7 @@ GO
    ============================================================
 
    academico
+      - AreaAcademica
       - Facultad
       - Carrera
       - PeriodoAcademico
@@ -936,33 +960,37 @@ GO
 
    1. Solo correos institucionales @unmsm.edu.pe.
 
-   2. Un estudiante debe estar matriculado en el periodo acad閙ico
+   2. Un estudiante debe estar matriculado en el periodo acad茅mico
       correspondiente para poder postular.
 
-   3. No se requiere Reporte de Matr韈ula:
-      la condici髇 de matr韈ula se almacena en academico.MatriculaEstudiante.
+   3. No se requiere Reporte de Matr铆cula:
+      la condici贸n de matr铆cula se almacena en academico.MatriculaEstudiante.
 
    4. El estudiante debe contar con un CV vigente.
 
    5. Cada estudiante solo puede postular una vez a una convocatoria.
 
-   6. La postulaci髇 conserva exactamente el CV utilizado al momento
+   6. La postulaci贸n conserva exactamente el CV utilizado al momento
       de enviarse.
 
    7. El secretario no debe evaluar utilizando datos identificatorios
       del estudiante.
 
-   8. La evaluaci髇 se realiza mediante codigo_anonimo y un CV anonimizado.
+   8. La evaluaci贸n se realiza mediante codigo_anonimo y un CV anonimizado.
 
-   9. La IA se usa exclusivamente para anonimizaci髇 del CV,
-      no para decidir qui閚 es seleccionado o descartado.
+   9. La IA se usa exclusivamente para anonimizaci贸n del CV,
+      no para decidir qui茅n es seleccionado o descartado.
 
-   10. Si la anonimizaci髇 falla o requiere revisi髇,
-       el CV no debe habilitarse para evaluaci髇.
+   10. Si la anonimizaci贸n falla o requiere revisi贸n,
+       el CV no debe habilitarse para evaluaci贸n.
 
-   11. Los cierres autom醫icos, notificaciones y validaciones temporales
+   11. Los cierres autom谩ticos, notificaciones y validaciones temporales
        corresponden principalmente al backend.
 
    12. Los indicadores del dashboard se calculan mediante consultas/vistas,
        evitando duplicar valores derivados en tablas.
+
+   13. Cada facultad pertenece obligatoriamente a una de las cinco 谩reas
+       acad茅micas de la UNMSM (A, B, C, D o E), mediante
+       academico.Facultad.area_academica_id.
 */
