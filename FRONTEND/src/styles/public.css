@@ -1,0 +1,96 @@
+.public-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+
+.public-header {
+  height: 72px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.public-brand {
+  border: none;
+  background: transparent;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  color: #7f1d1d;
+}
+
+.public-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.public-login-button {
+  border: none;
+  border-radius: 8px;
+
+  padding: 0.7rem 1.25rem;
+
+  background-color: #7f1d1d;
+  color: #ffffff;
+
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.public-login-button:hover {
+  background-color: #991b1b;
+}
+
+.public-login-button:active {
+  transform: scale(0.98);
+}
+
+.public-main {
+  flex: 1;
+  width: 100%;
+}
+
+.public-footer {
+  padding: 1.5rem 8%;
+
+  background-color: #111827;
+  color: #d1d5db;
+
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.public-footer p + p {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .public-header {
+    height: auto;
+    padding: 1rem 5%;
+  }
+
+  .public-brand {
+    font-size: 1.25rem;
+  }
+
+  .public-login-button {
+    padding: 0.6rem 0.9rem;
+  }
+
+  .public-footer {
+    padding: 1.25rem 5%;
+  }
+}

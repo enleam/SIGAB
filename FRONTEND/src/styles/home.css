@@ -1,0 +1,96 @@
+.home-hero {
+  min-height: calc(100vh - 72px);
+  padding: 5rem 8%;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(127, 29, 29, 0.96),
+      rgba(69, 10, 10, 0.92)
+    );
+}
+
+.home-content {
+  max-width: 720px;
+}
+
+.home-title {
+  margin-bottom: 1rem;
+
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1;
+  font-weight: 800;
+
+  color: #ffffff;
+}
+
+.home-subtitle {
+  margin-bottom: 1.5rem;
+
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 600;
+
+  color: #fef2f2;
+}
+
+.home-description {
+  max-width: 620px;
+  margin-bottom: 2rem;
+
+  font-size: 1.1rem;
+  line-height: 1.7;
+
+  color: #fecaca;
+}
+
+.home-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home-primary-button {
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+
+  padding: 0.85rem 1.5rem;
+
+  background-color: #ffffff;
+  color: #7f1d1d;
+
+  font-weight: 700;
+  font-size: 1rem;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-primary-button:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.home-primary-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: auto;
+    padding: 4rem 6%;
+  }
+
+  .home-content {
+    max-width: 100%;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+}

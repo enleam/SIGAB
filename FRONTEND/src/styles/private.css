@@ -1,0 +1,276 @@
+.private-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+
+.private-header {
+  min-height: 72px;
+  padding: 0 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.private-brand {
+  border: none;
+  background: transparent;
+
+  color: #7f1d1d;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+}
+
+.private-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.private-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.private-user-email {
+  color: #1f2937;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.private-user-role {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.private-logout-button {
+  padding: 0.65rem 1rem;
+
+  border: 1px solid #7f1d1d;
+  border-radius: 8px;
+
+  background-color: transparent;
+  color: #7f1d1d;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.private-logout-button:hover {
+  background-color: #7f1d1d;
+  color: #ffffff;
+}
+
+.private-logout-button:active {
+  transform: scale(0.98);
+}
+
+.private-main {
+  flex: 1;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 3rem 6%;
+}
+
+.private-page {
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 2rem;
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.private-page-title {
+  margin-bottom: 0.75rem;
+
+  color: #7f1d1d;
+
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.private-page-description {
+  margin-bottom: 2rem;
+
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.private-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.private-primary-button {
+  padding: 0.8rem 1.25rem;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #7f1d1d;
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.private-primary-button:hover {
+  background-color: #991b1b;
+}
+
+.private-primary-button:active {
+  transform: scale(0.98);
+}
+
+.private-secondary-button {
+  padding: 0.8rem 1.25rem;
+
+  border: 1px solid #7f1d1d;
+  border-radius: 8px;
+
+  background-color: #ffffff;
+  color: #7f1d1d;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.private-secondary-button:hover {
+  background-color: #7f1d1d;
+  color: #ffffff;
+}
+
+.private-secondary-button:active {
+  transform: scale(0.98);
+}
+
+.private-error-message {
+  padding: 0.85rem 1rem;
+
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  background-color: #fef2f2;
+  color: #991b1b;
+
+  line-height: 1.5;
+}
+
+.student-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.student-profile-field {
+  min-height: 92px;
+
+  padding: 1rem 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background-color: #f8fafc;
+}
+
+.student-profile-label {
+  color: #64748b;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.student-profile-value {
+  color: #1f2937;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .private-header {
+    padding: 1rem 5%;
+    gap: 1rem;
+  }
+
+  .private-user {
+    gap: 0.75rem;
+  }
+
+  .private-user-info {
+    display: none;
+  }
+
+  .private-main {
+    padding: 2rem 5%;
+  }
+
+  .private-page {
+    padding: 1.5rem;
+  }
+
+  .private-page-title {
+    font-size: 1.7rem;
+  }
+
+  .private-actions {
+    flex-direction: column;
+  }
+
+  .private-primary-button,
+  .private-secondary-button {
+    width: 100%;
+  }
+
+  .student-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
