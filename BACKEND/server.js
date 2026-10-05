@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -7,6 +7,7 @@ const { validarVariablesEntorno } = require("./config/env");
 
 const authRoutes = require("./routes/auth.routes");
 const estudianteRoutes = require("./routes/estudiante.routes");
+const secretarioRoutes = require("./routes/secretario.routes");
 const passwordResetRoutes = require("./routes/passwordReset.routes");
 
 const { rutaNoEncontrada } = require("./middlewares/notFound.middleware");
@@ -40,6 +41,7 @@ app.get("/api/health", (req, res) => {
 // Rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/estudiantes", estudianteRoutes);
+app.use("/api/secretarios", secretarioRoutes);
 app.use("/api/password-reset", passwordResetRoutes);
 
 // Ruta no encontrada

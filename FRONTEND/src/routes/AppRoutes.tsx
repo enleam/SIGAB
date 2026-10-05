@@ -1,4 +1,4 @@
-import {
+﻿import {
   BrowserRouter,
   Route,
   Routes,
@@ -18,6 +18,7 @@ import StudentProfilePage from "../pages/StudentProfilePage";
 
 import SecretaryHomePage from "../pages/SecretaryHomePage";
 import AdminHomePage from "../pages/AdminHomePage";
+import AdminSecretariesPage from "../pages/AdminSecretariesPage";
 
 import ProtectedRoute from "./ProtectedRoute";
 import RoleRoute from "./RoleRoute";
@@ -96,6 +97,11 @@ const AppRoutes = () => {
               <Route
                 path="/administrador"
                 element={<AdminHomePage />}
+              />
+
+              <Route
+                path="/administrador/secretarios"
+                element={<AdminSecretariesPage />}
               />
             </Route>
           </Route>
