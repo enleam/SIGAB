@@ -1,4 +1,4 @@
-﻿import {
+import {
   BrowserRouter,
   Route,
   Routes,
@@ -7,7 +7,6 @@
 import PublicLayout from "../layouts/PublicLayout";
 import PrivateLayout from "../layouts/PrivateLayout";
 
-import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
@@ -25,97 +24,170 @@ import AdminSecretariesPage from "../pages/AdminSecretariesPage";
 import ProtectedRoute from "./ProtectedRoute";
 import RoleRoute from "./RoleRoute";
 
-const AppRoutes = () => {
+import HomeRedirect from "./HomeRedirect";
+import { ROUTES } from "./paths";
+
+function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* ====================================================
+            REDIRECCION INICIAL
+            ==================================================== */}
+
+        <Route
+          path={ROUTES.HOME}
+          element={<HomeRedirect />}
+        />
+
+
+        {/* ====================================================
+            RUTAS PUBLICAS
+            ==================================================== */}
+
         <Route element={<PublicLayout />}>
           <Route
-            path="/"
-            element={<HomePage />}
-          />
-
-          <Route
-            path="/login"
+            path={ROUTES.LOGIN}
             element={<LoginPage />}
           />
 
           <Route
-            path="/recuperar-contrasena"
+            path={ROUTES.FORGOT_PASSWORD}
             element={<ForgotPasswordPage />}
           />
 
           <Route
-            path="/restablecer-contrasena"
+            path={ROUTES.RESET_PASSWORD}
             element={<ResetPasswordPage />}
           />
+        </Route>
 
+
+        {/* ====================================================
+            RUTAS PROTEGIDAS
+            ==================================================== */}
+
+        <Route element={<ProtectedRoute />}>
+
+          <Route element={<PrivateLayout />}>
+
+            {/* ================================================
+                ESTUDIANTE
+                ================================================ */}
+
+            <Route
+              element={
+                <RoleRoute
+                  rolesPermitidos={[
+                    "ESTUDIANTE",
+                  ]}
+                />
+              }
+            >
+              <Route
+                path={
+                  ROUTES.ESTUDIANTE.HOME
+                }
+                element={
+                  <StudentHomePage />
+                }
+              />
+
+              <Route
+                path={
+                  ROUTES.ESTUDIANTE.PERFIL
+                }
+                element={
+                  <StudentProfilePage />
+                }
+              />
+            </Route>
+
+
+            {/* ================================================
+                SECRETARIO
+                ================================================ */}
+
+            <Route
+              element={
+                <RoleRoute
+                  rolesPermitidos={[
+                    "SECRETARIO",
+                  ]}
+                />
+              }
+            >
+              <Route
+                path={
+                  ROUTES.SECRETARIO.HOME
+                }
+                element={
+                  <SecretaryHomePage />
+                }
+              />
+
+              <Route
+                path={
+                  ROUTES.SECRETARIO.EVALUACION
+                }
+                element={
+                  <SecretaryEvaluationPage />
+                }
+              />
+            </Route>
+
+
+            {/* ================================================
+                ADMINISTRADOR
+                ================================================ */}
+
+            <Route
+              element={
+                <RoleRoute
+                  rolesPermitidos={[
+                    "ADMINISTRADOR",
+                  ]}
+                />
+              }
+            >
+              <Route
+                path={
+                  ROUTES.ADMINISTRADOR.HOME
+                }
+                element={
+                  <AdminHomePage />
+                }
+              />
+
+              <Route
+                path={
+                  ROUTES.ADMINISTRADOR.SECRETARIOS
+                }
+                element={
+                  <AdminSecretariesPage />
+                }
+              />
+            </Route>
+
+          </Route>
+        </Route>
+
+
+        {/* ====================================================
+            404
+            ==================================================== */}
+
+        <Route element={<PublicLayout />}>
           <Route
-            path="*"
+            path={ROUTES.NOT_FOUND}
             element={<NotFoundPage />}
           />
         </Route>
 
-        <Route element={<ProtectedRoute />}>
-          <Route element={<PrivateLayout />}>
-            <Route
-              element={
-                <RoleRoute
-                  rolesPermitidos={["ESTUDIANTE"]}
-                />
-              }
-            >
-              <Route
-                path="/estudiante"
-                element={<StudentHomePage />}
-              />
-
-              <Route
-                path="/estudiante/perfil"
-                element={<StudentProfilePage />}
-              />
-            </Route>
-
-            <Route
-              element={
-                <RoleRoute
-                  rolesPermitidos={["SECRETARIO"]}
-                />
-              }
-            >
-              <Route
-                path="/secretario"
-                element={<SecretaryHomePage />}
-              />
-
-              <Route
-                path="/secretario/convocatorias/:convocatoriaId/evaluacion"
-                element={<SecretaryEvaluationPage />}
-              />
-            </Route>
-
-            <Route
-              element={
-                <RoleRoute
-                  rolesPermitidos={["ADMINISTRADOR"]}
-                />
-              }
-            >
-              <Route
-                path="/administrador"
-                element={<AdminHomePage />}
-              />
-
-              <Route
-                path="/administrador/secretarios"
-                element={<AdminSecretariesPage />}
-              />
-            </Route>
-          </Route>
-        </Route>
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default AppRoutes;

@@ -1,0 +1,927 @@
+:root {
+  --sigab-sidebar-bg: #17202b;
+  --sigab-sidebar-bg-soft: #202b38;
+  --sigab-sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --sigab-sidebar-text: #f5f7fa;
+  --sigab-sidebar-muted: #9ba7b5;
+
+  --sigab-primary: #8a1f2d;
+  --sigab-primary-hover: #a02b3a;
+
+  --sigab-page-bg: #f4f6f8;
+  --sigab-surface: #ffffff;
+
+  --sigab-border: #e3e7ec;
+
+  --sigab-text: #242b35;
+  --sigab-muted: #697386;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+.sigab-shell {
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    var(--sigab-page-bg);
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sigab-sidebar {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-shrink: 0;
+
+  height: 100vh;
+
+  color:
+    var(--sigab-sidebar-text);
+
+  background:
+    var(--sigab-sidebar-bg);
+
+  border-right:
+    1px solid
+    var(--sigab-sidebar-border);
+
+  transition:
+    width 180ms ease,
+    transform 220ms ease;
+
+  z-index: 50;
+}
+
+.sigab-sidebar--resizing {
+  transition: none;
+}
+
+body.sigab-sidebar-is-resizing {
+  cursor: col-resize;
+  user-select: none;
+}
+
+
+/* ============================================================
+   HEADER DEL SIDEBAR
+   ============================================================ */
+
+.sigab-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 74px;
+
+  padding:
+    14px
+    15px;
+
+  border-bottom:
+    1px solid
+    var(--sigab-sidebar-border);
+}
+
+.sigab-sidebar__brand {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 11px;
+}
+
+.sigab-sidebar__brand-icon {
+  display: grid;
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  background:
+    var(--sigab-primary);
+}
+
+.sigab-sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sigab-sidebar__brand-text strong {
+  font-size: 1rem;
+  line-height: 1.2;
+
+  letter-spacing: 0.05em;
+}
+
+.sigab-sidebar__brand-text span {
+  margin-top: 3px;
+
+  color:
+    var(--sigab-sidebar-muted);
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   ROL
+   ============================================================ */
+
+.sigab-sidebar__role {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  margin:
+    14px
+    14px
+    2px;
+
+  padding:
+    10px
+    12px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background:
+    var(--sigab-sidebar-bg-soft);
+}
+
+.sigab-sidebar__role-label {
+  color:
+    var(--sigab-sidebar-muted);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.sigab-sidebar__role-value {
+  overflow: hidden;
+
+  font-size: 0.77rem;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   NAVEGACION
+   ============================================================ */
+
+.sigab-sidebar__navigation {
+  flex: 1;
+
+  min-height: 0;
+
+  padding:
+    14px
+    10px
+    18px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+}
+
+.sigab-sidebar__section + .sigab-sidebar__section {
+  margin-top: 22px;
+}
+
+.sigab-sidebar__section-title {
+  display: block;
+
+  padding:
+    0
+    11px
+    8px;
+
+  color:
+    var(--sigab-sidebar-muted);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.09em;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sigab-sidebar__section-items {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+/* ============================================================
+   ITEMS
+   ============================================================ */
+
+.sigab-sidebar__link,
+.sigab-sidebar__logout,
+.sigab-sidebar__collapse-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 44px;
+
+  gap: 12px;
+
+  border: 0;
+  border-radius: 8px;
+
+  color:
+    var(--sigab-sidebar-text);
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 0.86rem;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 140ms ease,
+    background 140ms ease;
+}
+
+.sigab-sidebar__link {
+  padding:
+    0
+    12px;
+}
+
+.sigab-sidebar__link:hover,
+.sigab-sidebar__logout:hover,
+.sigab-sidebar__collapse-button:hover {
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+.sigab-sidebar__link.is-active {
+  color: #ffffff;
+
+  background:
+    var(--sigab-primary);
+}
+
+.sigab-sidebar__link.is-active:hover {
+  background:
+    var(--sigab-primary-hover);
+}
+
+.sigab-sidebar__link-icon {
+  flex-shrink: 0;
+}
+
+.sigab-sidebar__link-text,
+.sigab-sidebar__logout-text {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.sigab-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 10px;
+
+  border-top:
+    1px solid
+    var(--sigab-sidebar-border);
+}
+
+.sigab-sidebar__logout,
+.sigab-sidebar__collapse-button {
+  padding:
+    0
+    12px;
+}
+
+.sigab-sidebar__logout {
+  color: #f3d6db;
+}
+
+.sigab-sidebar__collapse-button {
+  color:
+    var(--sigab-sidebar-muted);
+}
+
+
+/* ============================================================
+   COLLAPSED
+   ============================================================ */
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__brand {
+  width: 100%;
+
+  justify-content: center;
+}
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__brand-text,
+.sigab-sidebar--collapsed
+.sigab-sidebar__role,
+.sigab-sidebar--collapsed
+.sigab-sidebar__section-title,
+.sigab-sidebar--collapsed
+.sigab-sidebar__link-text,
+.sigab-sidebar--collapsed
+.sigab-sidebar__logout-text {
+  display: none;
+}
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__header {
+  justify-content: center;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__navigation {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__link,
+.sigab-sidebar--collapsed
+.sigab-sidebar__logout,
+.sigab-sidebar--collapsed
+.sigab-sidebar__collapse-button {
+  justify-content: center;
+
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* ============================================================
+   TOOLTIPS
+   ============================================================ */
+
+.sigab-sidebar__tooltip {
+  position: absolute;
+
+  top: 50%;
+  left: calc(100% + 12px);
+
+  display: block;
+
+  padding:
+    7px
+    10px;
+
+  color: #ffffff;
+
+  background: #10151c;
+
+  border-radius: 6px;
+
+  font-size: 0.76rem;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(-50%)
+    translateX(-4px);
+
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+
+  box-shadow:
+    0
+    8px
+    24px
+    rgba(0, 0, 0, 0.2);
+
+  z-index: 200;
+}
+
+.sigab-sidebar--collapsed
+.sigab-sidebar__link:hover
+.sigab-sidebar__tooltip,
+.sigab-sidebar--collapsed
+.sigab-sidebar__logout:hover
+.sigab-sidebar__tooltip {
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+
+.sigab-sidebar__resizer {
+  position: absolute;
+
+  top: 0;
+  right: -4px;
+
+  width: 8px;
+  height: 100%;
+
+  cursor: col-resize;
+
+  z-index: 10;
+}
+
+.sigab-sidebar__resizer::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 3px;
+
+  width: 2px;
+  height: 100%;
+
+  background: transparent;
+
+  transition:
+    background 120ms ease;
+}
+
+.sigab-sidebar__resizer:hover::after,
+.sigab-sidebar--resizing
+.sigab-sidebar__resizer::after {
+  background:
+    var(--sigab-primary);
+}
+
+
+/* ============================================================
+   BOTON CERRAR MOBILE
+   ============================================================ */
+
+.sigab-sidebar__mobile-close {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border: 0;
+  border-radius: 8px;
+
+  color:
+    var(--sigab-sidebar-text);
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   CONTENIDO GENERAL
+   ============================================================ */
+
+.sigab-shell__body {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   HEADER SUPERIOR
+   ============================================================ */
+
+.sigab-topbar {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 68px;
+
+  padding:
+    10px
+    28px;
+
+  background:
+    var(--sigab-surface);
+
+  border-bottom:
+    1px solid
+    var(--sigab-border);
+
+  z-index: 30;
+}
+
+.sigab-topbar__left {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 12px;
+}
+
+.sigab-topbar__menu-button {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    var(--sigab-border);
+
+  border-radius: 8px;
+
+  color:
+    var(--sigab-text);
+
+  background: #ffffff;
+
+  cursor: pointer;
+}
+
+.sigab-topbar__title {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.sigab-topbar__title strong {
+  color:
+    var(--sigab-text);
+
+  font-size: 0.95rem;
+}
+
+.sigab-topbar__title span {
+  margin-top: 2px;
+
+  color:
+    var(--sigab-muted);
+
+  font-size: 0.73rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sigab-topbar__user {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 12px;
+}
+
+.sigab-topbar__user-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+}
+
+.sigab-topbar__email {
+  color:
+    var(--sigab-text);
+
+  font-size: 0.82rem;
+}
+
+.sigab-topbar__role-mobile {
+  display: none;
+
+  margin-top: 2px;
+
+  color:
+    var(--sigab-muted);
+
+  font-size: 0.68rem;
+}
+
+.sigab-topbar__role {
+  padding:
+    6px
+    9px;
+
+  border-radius: 6px;
+
+  color:
+    var(--sigab-muted);
+
+  background: #f0f2f5;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   CONTENIDO DE PAGINAS
+   ============================================================ */
+
+.sigab-shell__content {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto;
+
+  padding:
+    30px
+    clamp(20px, 3vw, 48px)
+    48px;
+}
+
+
+/* ============================================================
+   CARGA DE SESION
+   ============================================================ */
+
+.sigab-session-loading {
+  display: grid;
+  place-items: center;
+
+  min-height: 100vh;
+
+  color:
+    var(--sigab-muted);
+
+  background:
+    var(--sigab-page-bg);
+}
+
+
+/* ============================================================
+   OVERLAY
+   ============================================================ */
+
+.sigab-shell__overlay {
+  display: none;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 860px) {
+
+  .sigab-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width:
+      min(86vw, 320px) !important;
+
+    transform:
+      translateX(-100%);
+
+    box-shadow:
+      12px
+      0
+      32px
+      rgba(0, 0, 0, 0.22);
+
+    z-index: 100;
+  }
+
+  .sigab-sidebar--mobile-open {
+    transform:
+      translateX(0);
+  }
+
+
+  /* Restaurar visual completo aunque
+     haya quedado colapsado en desktop */
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__brand {
+    width: auto;
+
+    justify-content:
+      flex-start;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__brand-text {
+    display: flex;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__role {
+    display: flex;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__section-title {
+    display: block;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__link-text,
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__logout-text {
+    display: inline;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__header {
+    justify-content:
+      space-between;
+
+    padding:
+      14px
+      15px;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__navigation {
+    padding:
+      14px
+      10px
+      18px;
+  }
+
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__link,
+  .sigab-sidebar--collapsed
+  .sigab-sidebar__logout {
+    justify-content:
+      flex-start;
+
+    padding:
+      0
+      12px;
+  }
+
+
+  /* Ocultar funciones desktop */
+
+  .sigab-sidebar__collapse-button,
+  .sigab-sidebar__resizer,
+  .sigab-sidebar__tooltip {
+    display: none;
+  }
+
+  .sigab-sidebar__mobile-close {
+    display: inline-flex;
+  }
+
+
+  /* Topbar */
+
+  .sigab-topbar {
+    padding:
+      10px
+      16px;
+  }
+
+  .sigab-topbar__menu-button {
+    display: inline-flex;
+  }
+
+
+  /* Overlay */
+
+  .sigab-shell__overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: block;
+
+    padding: 0;
+
+    border: 0;
+
+    background:
+      rgba(10, 14, 20, 0.5);
+
+    cursor: pointer;
+
+    z-index: 90;
+  }
+
+
+  /* Contenido */
+
+  .sigab-shell__content {
+    padding:
+      22px
+      16px
+      36px;
+  }
+}
+
+
+@media (max-width: 620px) {
+
+  .sigab-topbar__title span {
+    display: none;
+  }
+
+  .sigab-topbar__email {
+    max-width: 165px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sigab-topbar__role {
+    display: none;
+  }
+
+  .sigab-topbar__role-mobile {
+    display: block;
+  }
+}

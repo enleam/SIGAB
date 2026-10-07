@@ -1,69 +1,118 @@
-﻿const express = require("express");
+const express = require("express");
 const cors = require("cors");
+
 require("dotenv").config();
 
-const { getConnection } = require("./config/db");
-const { validarVariablesEntorno } = require("./config/env");
+const {
+    getConnection,
+} = require("./config/db");
 
-const authRoutes = require("./routes/auth.routes");
-const estudianteRoutes = require("./routes/estudiante.routes");
-const secretarioRoutes = require("./routes/secretario.routes");
-const passwordResetRoutes = require("./routes/passwordReset.routes");
-const postulacionRoutes = require("./routes/postulacion.routes");
+const {
+    validarVariablesEntorno,
+} = require("./config/env");
 
-const { rutaNoEncontrada } = require("./middlewares/notFound.middleware");
-const { manejarError } = require("./middlewares/error.middleware");
+const apiRoutes = require("./routes");
+
+const {
+    rutaNoEncontrada,
+} = require("./middlewares/notFound.middleware");
+
+const {
+    manejarError,
+} = require("./middlewares/error.middleware");
+
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Validar configuración
+const PORT =
+    process.env.PORT || 3000;
+
+
+/* ============================================================
+   VALIDACION DE VARIABLES DE ENTORNO
+   ============================================================ */
+
 validarVariablesEntorno();
 
-// Configuración CORS
+
+/* ============================================================
+   CORS
+   ============================================================ */
+
 app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    exposedHeaders: ["X-Access-Token"],
-  })
+    cors({
+        origin:
+            process.env.FRONTEND_URL,
+
+        exposedHeaders: [
+            "X-Access-Token",
+        ],
+    })
 );
 
-// Middlewares generales
-app.use(express.json());
 
-// Ruta para verificar que la API está activa
-app.get("/api/health", (req, res) => {
-  res.status(200).json({
-    ok: true,
-    message: "API de SIGAB funcionando correctamente",
-  });
-});
+/* ============================================================
+   BODY PARSER
+   ============================================================ */
 
-// Rutas
-app.use("/api/auth", authRoutes);
-app.use("/api/estudiantes", estudianteRoutes);
-app.use("/api/secretarios", secretarioRoutes);
-app.use("/api/password-reset", passwordResetRoutes);
-app.use("/api/postulaciones", postulacionRoutes);
+app.use(
+    express.json()
+);
 
-// Ruta no encontrada
-app.use(rutaNoEncontrada);
 
-// Middleware global de errores
-app.use(manejarError);
+/* ============================================================
+   RUTAS DE LA API
+   ============================================================ */
 
-// Inicio del servidor
-const startServer = async () => {
-  try {
-    await getConnection();
+app.use(
+    "/api",
+    apiRoutes
+);
 
-    app.listen(PORT, () => {
-      console.log(`Servidor SIGAB ejecutándose en http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("No se pudo iniciar el servidor:", error.message);
-    process.exit(1);
-  }
-};
 
-startServer();
+/* ============================================================
+   RUTA NO ENCONTRADA
+   ============================================================ */
+
+app.use(
+    rutaNoEncontrada
+);
+
+
+/* ============================================================
+   MANEJO GLOBAL DE ERRORES
+   ============================================================ */
+
+app.use(
+    manejarError
+);
+
+
+/* ============================================================
+   INICIO DEL SERVIDOR
+   ============================================================ */
+
+async function iniciarServidor() {
+    try {
+        await getConnection();
+
+        app.listen(
+            PORT,
+            () => {
+                console.log(
+                    `Servidor SIGAB ejecutandose en puerto ${PORT}`
+                );
+            }
+        );
+    } catch (error) {
+        console.error(
+            "No se pudo iniciar el servidor:",
+            error
+        );
+
+        process.exit(1);
+    }
+}
+
+
+iniciarServidor();
