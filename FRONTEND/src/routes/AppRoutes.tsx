@@ -17,6 +17,8 @@ import StudentHomePage from "../pages/StudentHomePage";
 import StudentProfilePage from "../pages/StudentProfilePage";
 
 import SecretaryHomePage from "../pages/SecretaryHomePage";
+import SecretaryEvaluationPage from "../pages/SecretaryEvaluationPage";
+
 import AdminHomePage from "../pages/AdminHomePage";
 import AdminSecretariesPage from "../pages/AdminSecretariesPage";
 
@@ -84,6 +86,11 @@ const AppRoutes = () => {
               <Route
                 path="/secretario"
                 element={<SecretaryHomePage />}
+              />
+
+              <Route
+                path="/secretario/convocatorias/:convocatoriaId/evaluacion"
+                element={<SecretaryEvaluationPage />}
               />
             </Route>
 

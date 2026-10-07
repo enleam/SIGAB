@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth.routes");
 const estudianteRoutes = require("./routes/estudiante.routes");
 const secretarioRoutes = require("./routes/secretario.routes");
 const passwordResetRoutes = require("./routes/passwordReset.routes");
+const postulacionRoutes = require("./routes/postulacion.routes");
 
 const { rutaNoEncontrada } = require("./middlewares/notFound.middleware");
 const { manejarError } = require("./middlewares/error.middleware");
@@ -43,6 +44,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/estudiantes", estudianteRoutes);
 app.use("/api/secretarios", secretarioRoutes);
 app.use("/api/password-reset", passwordResetRoutes);
+app.use("/api/postulaciones", postulacionRoutes);
 
 // Ruta no encontrada
 app.use(rutaNoEncontrada);

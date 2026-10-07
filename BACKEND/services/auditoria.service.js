@@ -70,8 +70,29 @@ const registrarRestablecimientoContrasena = async ({
   });
 };
 
+const registrarAccesoEvaluacionAnonimizada = async ({
+  usuarioId,
+  convocatoriaId,
+  direccionIp,
+  userAgent,
+}) => {
+  await ejecutarAuditoriaSegura({
+    usuarioId,
+    tipoEvento: "ACCESO_EVALUACION_ANONIMIZADA",
+    entidadTipo: "CONVOCATORIA",
+    entidadId: convocatoriaId,
+    esAccesoSensible: true,
+    detalle: {
+      acceso: "POSTULACIONES_ANONIMIZADAS",
+    },
+    direccionIp,
+    userAgent,
+  });
+};
+
 module.exports = {
   registrarLoginExitoso,
   registrarLoginFallido,
   registrarRestablecimientoContrasena,
+  registrarAccesoEvaluacionAnonimizada,
 };

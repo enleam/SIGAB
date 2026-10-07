@@ -1,4 +1,8 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -74,6 +78,78 @@ const PrivateLayout = () => {
           </div>
         )}
       </header>
+
+      {usuario && (
+        <nav className="private-nav">
+          {usuario.rol === "ESTUDIANTE" && (
+            <>
+              <NavLink
+                to="/estudiante"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? "private-nav-link active"
+                    : "private-nav-link"
+                }
+              >
+                Inicio
+              </NavLink>
+
+              <NavLink
+                to="/estudiante/perfil"
+                className={({ isActive }) =>
+                  isActive
+                    ? "private-nav-link active"
+                    : "private-nav-link"
+                }
+              >
+                Mi perfil
+              </NavLink>
+            </>
+          )}
+
+          {usuario.rol === "SECRETARIO" && (
+            <NavLink
+              to="/secretario"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? "private-nav-link active"
+                  : "private-nav-link"
+              }
+            >
+              Inicio
+            </NavLink>
+          )}
+
+          {usuario.rol === "ADMINISTRADOR" && (
+            <>
+              <NavLink
+                to="/administrador"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? "private-nav-link active"
+                    : "private-nav-link"
+                }
+              >
+                Inicio
+              </NavLink>
+
+              <NavLink
+                to="/administrador/secretarios"
+                className={({ isActive }) =>
+                  isActive
+                    ? "private-nav-link active"
+                    : "private-nav-link"
+                }
+              >
+                Gestión de secretarios
+              </NavLink>
+            </>
+          )}
+        </nav>
+      )}
 
       <main className="private-main">
         <Outlet />
