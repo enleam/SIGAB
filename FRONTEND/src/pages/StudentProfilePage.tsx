@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { estudianteService } from "../services/estudiante.service";
+import StudentCVSection from "../components/StudentCVSection";
 
 import type { PerfilEstudiante } from "../types/estudiante";
 
@@ -32,7 +33,7 @@ const StudentProfilePage = () => {
       }
     };
 
-    cargarPerfil();
+    void cargarPerfil();
   }, []);
 
   const volverAlPanel = () => {
@@ -185,6 +186,9 @@ const StudentProfilePage = () => {
           </span>
         </div>
       </div>
+
+      {/* HU05 - Gestión del CV */}
+      <StudentCVSection />
 
       <div className="private-actions">
         <button

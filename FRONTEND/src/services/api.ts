@@ -1,3 +1,4 @@
+
 const API_URL =
   import.meta.env.VITE_API_URL ??
   "http://localhost:3000/api";
@@ -6,6 +7,7 @@ const TOKEN_KEY = "sigab_token";
 
 interface ApiRequestOptions extends RequestInit {
   auth?: boolean;
+  responseType?: "json" | "blob";
 }
 
 export const obtenerToken = (): string | null => {
@@ -48,13 +50,20 @@ export const apiRequest = async <T>(
 ): Promise<T> => {
   const {
     auth = false,
+    responseType = "json",
     headers,
     ...requestOptions
   } = options;
 
   const requestHeaders = new Headers(headers);
 
-  if (!requestHeaders.has("Content-Type")) {
+  // El navegador debe configurar Content-Type cuando
+  // se envían archivos mediante FormData.
+  if (
+    !(requestOptions.body instanceof FormData) &&
+    requestOptions.body != null &&
+    !requestHeaders.has("Content-Type")
+  ) {
     requestHeaders.set(
       "Content-Type",
       "application/json"
@@ -80,6 +89,7 @@ export const apiRequest = async <T>(
     }
   );
 
+  // Mantener la renovación JWT implementada en HU01.
   if (auth) {
     const nuevoToken =
       response.headers.get("X-Access-Token");
@@ -106,6 +116,11 @@ export const apiRequest = async <T>(
 
   if (response.status === 204) {
     return undefined as T;
+  }
+
+  // Permitir obtener documentos PDF como Blob.
+  if (responseType === "blob") {
+    return (await response.blob()) as T;
   }
 
   const contentType =
