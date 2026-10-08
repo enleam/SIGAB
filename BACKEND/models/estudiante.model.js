@@ -1,3 +1,4 @@
+
 const { sql, getConnection } = require("../config/db");
 
 const buscarPorUsuarioId = async (usuarioId) => {
