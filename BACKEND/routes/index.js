@@ -10,6 +10,9 @@ const postulacionRoutes = require("./postulacion.routes");
 // HU04 - Convocatorias elegibles
 const convocatoriaRoutes = require("./convocatoria.routes");
 
+// HU05 - Gestión del CV
+const cvRoutes = require("./cv.routes");
+
 const router = express.Router();
 
 /* ============================================================
@@ -24,57 +27,45 @@ router.get("/health", (req, res) => {
 });
 
 /* ============================================================
-   AUTENTICACION
+   AUTENTICACION - HU01
    ============================================================ */
 
-router.use(
-  "/auth",
-  authRoutes
-);
+router.use("/auth", authRoutes);
 
 /* ============================================================
-   ESTUDIANTES
+   ESTUDIANTES - HU01 / HU04
    ============================================================ */
 
-router.use(
-  "/estudiantes",
-  estudianteRoutes
-);
+router.use("/estudiantes", estudianteRoutes);
 
 /* ============================================================
-   SECRETARIOS
+   GESTION DEL CV - HU05
    ============================================================ */
 
-router.use(
-  "/secretarios",
-  secretarioRoutes
-);
+router.use("/estudiantes/cv", cvRoutes);
 
 /* ============================================================
-   RECUPERACION DE CONTRASENA
+   SECRETARIOS - HU02
    ============================================================ */
 
-router.use(
-  "/password-reset",
-  passwordResetRoutes
-);
+router.use("/secretarios", secretarioRoutes);
+
+/* ============================================================
+   RECUPERACION DE CONTRASENA - HU01
+   ============================================================ */
+
+router.use("/password-reset", passwordResetRoutes);
 
 /* ============================================================
    POSTULACIONES / EVALUACION - HU03
    ============================================================ */
 
-router.use(
-  "/postulaciones",
-  postulacionRoutes
-);
+router.use("/postulaciones", postulacionRoutes);
 
 /* ============================================================
    CONVOCATORIAS ELEGIBLES - HU04
    ============================================================ */
 
-router.use(
-  "/convocatorias",
-  convocatoriaRoutes
-);
+router.use("/convocatorias", convocatoriaRoutes);
 
 module.exports = router;

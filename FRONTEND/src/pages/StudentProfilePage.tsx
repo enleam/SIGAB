@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { estudianteService } from "../services/estudiante.service";
+import StudentCVSection from "../components/StudentCVSection";
 
 import type { PerfilEstudiante } from "../types/estudiante";
 
@@ -57,7 +58,7 @@ const StudentProfilePage = () => {
       }
     };
 
-    cargarPerfil();
+    void cargarPerfil();
 
     return () => {
       activo = false;
@@ -256,6 +257,9 @@ const StudentProfilePage = () => {
           </span>
         </div>
       </div>
+
+      {/* HU05 - Gestión del CV */}
+      <StudentCVSection />
 
       <div className="private-actions">
         <button

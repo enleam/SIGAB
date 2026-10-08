@@ -1,647 +1,1386 @@
 ﻿.private-layout {
+
   min-height: 100vh;
+
   display: flex;
+
   flex-direction: column;
+
   background-color: #f8fafc;
+
 }
+
+
 
 .private-header {
+
   min-height: 72px;
+
   padding: 0 6%;
 
+
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
+
+
   background-color: #ffffff;
+
   border-bottom: 1px solid #e5e7eb;
+
 }
+
+
 
 .private-brand {
+
   border: none;
+
   background: transparent;
 
+
+
   color: #7f1d1d;
+
+
 
   font-size: 1.5rem;
+
   font-weight: 800;
+
   letter-spacing: 0.04em;
 
+
+
   cursor: pointer;
+
 }
+
+
 
 .private-user {
+
   display: flex;
+
   align-items: center;
+
   gap: 1rem;
+
 }
+
+
 
 .private-user-info {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-end;
+
 }
+
+
 
 .private-user-email {
+
   color: #1f2937;
+
   font-size: 0.9rem;
+
   font-weight: 600;
+
 }
+
+
 
 .private-user-role {
+
   color: #64748b;
+
   font-size: 0.8rem;
+
 }
 
+
+
 .private-logout-button {
+
   padding: 0.65rem 1rem;
 
+
+
   border: 1px solid #7f1d1d;
+
   border-radius: 8px;
 
+
+
   background-color: transparent;
+
   color: #7f1d1d;
 
+
+
   font-weight: 600;
+
+
 
   cursor: pointer;
 
+
+
   transition:
+
     background-color 0.2s ease,
+
     color 0.2s ease,
+
     transform 0.2s ease;
+
 }
+
+
 
 .private-logout-button:hover {
+
   background-color: #7f1d1d;
+
   color: #ffffff;
+
 }
+
+
 
 .private-logout-button:active {
+
   transform: scale(0.98);
+
 }
+
+
 
 .private-nav {
+
   min-height: 52px;
+
   padding: 0 6%;
 
+
+
   display: flex;
+
   align-items: center;
+
   gap: 0.5rem;
 
+
+
   background-color: #ffffff;
+
   border-bottom: 1px solid #e5e7eb;
+
 }
 
+
+
 .private-nav-link {
+
   padding: 0.75rem 1rem;
 
+
+
   border-radius: 8px;
+
+
 
   color: #475569;
 
+
+
   font-size: 0.9rem;
+
   font-weight: 600;
+
+
 
   text-decoration: none;
 
+
+
   transition:
+
     background-color 0.2s ease,
+
     color 0.2s ease;
+
 }
+
+
 
 .private-nav-link:hover {
+
   background-color: #f8fafc;
+
   color: #7f1d1d;
+
 }
+
+
 
 .private-nav-link.active {
+
   background-color: #fef2f2;
+
   color: #7f1d1d;
+
 }
+
+
 
 .private-main {
+
   flex: 1;
 
+
+
   width: 100%;
+
   max-width: 1400px;
 
+
+
   margin: 0 auto;
+
   padding: 3rem 6%;
+
 }
 
+
+
 .private-page {
+
   background-color: #ffffff;
 
+
+
   border: 1px solid #e5e7eb;
+
   border-radius: 16px;
+
+
 
   padding: 2rem;
 
+
+
   box-shadow:
+
     0 8px 24px rgba(15, 23, 42, 0.06);
+
 }
+
+
 
 .private-page-title {
+
   margin-bottom: 0.75rem;
 
+
+
   color: #7f1d1d;
+
+
 
   font-size: 2rem;
+
   font-weight: 700;
+
 }
+
+
 
 .private-page-description {
+
   margin-bottom: 2rem;
 
+
+
   color: #64748b;
+
   line-height: 1.6;
+
 }
+
+
 
 .private-actions {
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 1rem;
+
+
 
   margin-top: 2rem;
+
 }
+
+
 
 .private-primary-button {
+
   padding: 0.8rem 1.25rem;
+
+
 
   border: none;
+
   border-radius: 8px;
 
+
+
   background-color: #7f1d1d;
+
   color: #ffffff;
 
+
+
   font-size: 0.95rem;
+
   font-weight: 600;
+
+
 
   cursor: pointer;
 
+
+
   transition:
+
     background-color 0.2s ease,
+
     transform 0.2s ease;
+
 }
+
+
 
 .private-primary-button:hover {
+
   background-color: #991b1b;
+
 }
+
+
 
 .private-primary-button:active {
+
   transform: scale(0.98);
+
 }
 
+
+
 .private-secondary-button {
+
   padding: 0.8rem 1.25rem;
 
+
+
   border: 1px solid #7f1d1d;
+
   border-radius: 8px;
 
+
+
   background-color: #ffffff;
+
   color: #7f1d1d;
 
+
+
   font-size: 0.95rem;
+
   font-weight: 600;
+
+
 
   cursor: pointer;
 
+
+
   transition:
+
     background-color 0.2s ease,
+
     color 0.2s ease,
+
     transform 0.2s ease;
+
 }
+
+
 
 .private-secondary-button:hover {
+
   background-color: #7f1d1d;
+
   color: #ffffff;
+
 }
+
+
 
 .private-secondary-button:active {
+
   transform: scale(0.98);
+
 }
+
+
 
 .private-error-message {
+
   padding: 0.85rem 1rem;
 
+
+
   border: 1px solid #fecaca;
+
   border-radius: 8px;
 
+
+
   background-color: #fef2f2;
+
   color: #991b1b;
 
+
+
   line-height: 1.5;
+
 }
+
+
 
 .student-profile-grid {
+
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1rem;
+
 }
 
+
+
 .student-profile-field {
+
   min-height: 92px;
+
+
 
   padding: 1rem 1.25rem;
 
+
+
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   gap: 0.4rem;
 
+
+
   border: 1px solid #e5e7eb;
+
   border-radius: 10px;
 
+
+
   background-color: #f8fafc;
+
 }
+
+
 
 .student-profile-label {
+
   color: #64748b;
 
+
+
   font-size: 0.8rem;
+
   font-weight: 600;
+
   text-transform: uppercase;
+
   letter-spacing: 0.03em;
+
 }
+
+
 
 .student-profile-value {
+
   color: #1f2937;
 
+
+
   font-size: 1rem;
+
   font-weight: 600;
 
+
+
   overflow-wrap: anywhere;
+
 }
+
+
 
 @media (max-width: 768px) {
+
   .private-header {
+
     padding: 1rem 5%;
+
     gap: 1rem;
+
   }
+
+
 
   .private-user {
+
     gap: 0.75rem;
+
   }
+
+
 
   .private-user-info {
+
     display: none;
+
   }
+
+
 
   .private-nav {
+
     padding: 0.75rem 5%;
 
+
+
     align-items: stretch;
+
     flex-direction: column;
+
   }
+
+
 
   .private-nav-link {
+
     width: 100%;
+
   }
+
+
 
   .private-main {
+
     padding: 2rem 5%;
+
   }
+
+
 
   .private-page {
+
     padding: 1.5rem;
+
   }
+
+
 
   .private-page-title {
+
     font-size: 1.7rem;
+
   }
+
+
 
   .private-actions {
+
     flex-direction: column;
+
   }
+
+
 
   .private-primary-button,
+
   .private-secondary-button {
+
     width: 100%;
+
   }
 
+
+
   .student-profile-grid {
+
     grid-template-columns: 1fr;
+
   }
+
 }
+
+
 
 /* Gestión de secretarios */
 
+
+
 .secretaries-section-title {
+
   margin: 2rem 0 1rem;
+
+
 
   color: #1f2937;
 
+
+
   font-size: 1.25rem;
+
   font-weight: 700;
+
 }
+
+
 
 .secretaries-form {
+
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1rem;
 
+
+
   margin-bottom: 2rem;
+
   padding: 1.5rem;
 
+
+
   border: 1px solid #e5e7eb;
+
   border-radius: 12px;
 
+
+
   background-color: #f8fafc;
+
 }
+
+
 
 .secretaries-field {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 0.4rem;
+
 }
+
+
 
 .secretaries-label {
+
   color: #374151;
 
+
+
   font-size: 0.9rem;
+
   font-weight: 600;
+
 }
 
+
+
 .secretaries-input {
+
   width: 100%;
+
+
 
   padding: 0.75rem 0.9rem;
 
+
+
   border: 1px solid #cbd5e1;
+
   border-radius: 8px;
 
+
+
   background-color: #ffffff;
+
   color: #1f2937;
+
+
 
   font-size: 0.95rem;
 
+
+
   outline: none;
 
+
+
   transition:
+
     border-color 0.2s ease,
+
     box-shadow 0.2s ease;
+
 }
+
+
 
 .secretaries-input:focus {
+
   border-color: #7f1d1d;
 
+
+
   box-shadow:
+
     0 0 0 3px rgba(127, 29, 29, 0.1);
+
 }
+
+
 
 .secretaries-form-actions {
+
   grid-column: 1 / -1;
 
+
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.75rem;
 
+
+
   margin-top: 0.5rem;
+
 }
 
+
+
 .secretaries-success-message {
+
   margin-bottom: 1rem;
+
   padding: 0.85rem 1rem;
 
+
+
   border: 1px solid #bbf7d0;
+
   border-radius: 8px;
 
+
+
+  background-color: #f0fdf4;
+
+  color: #166534;
+
+}
+
+
+
+.secretaries-search {
+
+  display: flex;
+
+  gap: 0.75rem;
+
+
+
+  margin-bottom: 1.5rem;
+
+}
+
+
+
+.secretaries-search .secretaries-input {
+
+  flex: 1;
+
+}
+
+
+
+.secretaries-table-container {
+
+  width: 100%;
+
+
+
+  overflow-x: auto;
+
+
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+}
+
+
+
+.secretaries-table {
+
+  width: 100%;
+
+
+
+  border-collapse: collapse;
+
+
+
+  background-color: #ffffff;
+
+}
+
+
+
+.secretaries-table th,
+
+.secretaries-table td {
+
+  padding: 0.9rem 1rem;
+
+
+
+  border-bottom: 1px solid #e5e7eb;
+
+
+
+  text-align: left;
+
+  vertical-align: middle;
+
+}
+
+
+
+.secretaries-table th {
+
+  background-color: #f8fafc;
+
+  color: #475569;
+
+
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+
+}
+
+
+
+.secretaries-table td {
+
+  color: #1f2937;
+
+
+
+  font-size: 0.9rem;
+
+}
+
+
+
+.secretaries-table tbody tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+
+
+.secretaries-table tbody tr:hover {
+
+  background-color: #f8fafc;
+
+}
+
+
+
+.secretaries-status {
+
+  display: inline-flex;
+
+
+
+  padding: 0.3rem 0.65rem;
+
+
+
+  border-radius: 999px;
+
+
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+}
+
+
+
+.secretaries-status-active {
+
+  background-color: #dcfce7;
+
+  color: #166534;
+
+}
+
+
+
+.secretaries-status-inactive {
+
+  background-color: #f1f5f9;
+
+  color: #64748b;
+
+}
+
+
+
+.secretaries-actions {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+}
+
+
+
+.secretaries-action-button {
+
+  padding: 0.5rem 0.75rem;
+
+
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+
+
+  background-color: #ffffff;
+
+  color: #334155;
+
+
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+
+
+  cursor: pointer;
+
+}
+
+
+
+.secretaries-action-button:hover {
+
+  background-color: #f1f5f9;
+
+}
+
+
+
+.secretaries-action-button-danger {
+
+  border-color: #fecaca;
+
+  color: #991b1b;
+
+}
+
+
+
+.secretaries-action-button-danger:hover {
+
+  background-color: #fef2f2;
+
+}
+
+
+
+.secretaries-action-button:disabled {
+
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .secretaries-form {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .secretaries-search {
+
+    flex-direction: column;
+
+  }
+
+
+
+  .secretaries-form-actions {
+
+    flex-direction: column;
+
+  }
+
+
+
+  .secretaries-form-actions .private-primary-button,
+
+  .secretaries-form-actions .private-secondary-button {
+
+    width: 100%;
+
+  }
+
+}
+
+
+
+.evaluation-summary {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+
+
+
+  margin-bottom: 2rem;
+
+}
+
+
+
+.evaluation-summary-item {
+
+  padding: 1rem 1.25rem;
+
+
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.4rem;
+
+
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+
+
+  background-color: #f8fafc;
+
+}
+
+
+
+.evaluation-summary-label {
+
+  color: #64748b;
+
+
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+
+}
+
+
+
+.evaluation-summary-value {
+
+  color: #1f2937;
+
+
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+}
+
+
+
+.evaluation-table-container {
+
+  width: 100%;
+
+
+
+  overflow-x: auto;
+
+
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+}
+
+
+
+.evaluation-table {
+
+  width: 100%;
+
+
+
+  border-collapse: collapse;
+
+
+
+  background-color: #ffffff;
+
+}
+
+
+
+.evaluation-table th,
+
+.evaluation-table td {
+
+  padding: 0.9rem 1rem;
+
+
+
+  border-bottom: 1px solid #e5e7eb;
+
+
+
+  text-align: left;
+
+  vertical-align: middle;
+
+}
+
+
+
+.evaluation-table th {
+
+  background-color: #f8fafc;
+
+  color: #475569;
+
+
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+
+}
+
+
+
+.evaluation-table td {
+
+  color: #1f2937;
+
+
+
+  font-size: 0.9rem;
+
+}
+
+
+
+.evaluation-table tbody tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+
+
+.evaluation-table tbody tr:hover {
+
+  background-color: #f8fafc;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .evaluation-summary {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+/* ============================================================
+   HU05 - GESTION DEL CV DEL ESTUDIANTE
+   ============================================================ */
+
+.student-cv-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.student-cv-section h2 {
+  margin-bottom: 0.65rem;
+  color: #7f1d1d;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.student-cv-section .private-page-description {
+  margin-bottom: 1.25rem;
+}
+
+.student-cv-file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  color: #7f1d1d;
+}
+
+.student-cv-file > div {
+  min-width: 0;
+}
+
+.student-cv-file strong {
+  display: block;
+  color: #1f2937;
+  overflow-wrap: anywhere;
+}
+
+.student-cv-file p {
+  margin-top: 0.25rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.student-cv-section .private-actions {
+  margin-top: 1.25rem;
+}
+
+.student-cv-section .private-primary-button,
+.student-cv-section .private-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.student-cv-section button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.student-cv-section .private-error-message {
+  margin-top: 1rem;
+}
+
+.student-cv-section [role="status"] {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
   background-color: #f0fdf4;
   color: #166534;
 }
 
-.secretaries-search {
-  display: flex;
-  gap: 0.75rem;
-
-  margin-bottom: 1.5rem;
-}
-
-.secretaries-search .secretaries-input {
-  flex: 1;
-}
-
-.secretaries-table-container {
-  width: 100%;
-
-  overflow-x: auto;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-}
-
-.secretaries-table {
-  width: 100%;
-
-  border-collapse: collapse;
-
-  background-color: #ffffff;
-}
-
-.secretaries-table th,
-.secretaries-table td {
-  padding: 0.9rem 1rem;
-
-  border-bottom: 1px solid #e5e7eb;
-
-  text-align: left;
-  vertical-align: middle;
-}
-
-.secretaries-table th {
-  background-color: #f8fafc;
-  color: #475569;
-
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.secretaries-table td {
-  color: #1f2937;
-
-  font-size: 0.9rem;
-}
-
-.secretaries-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.secretaries-table tbody tr:hover {
-  background-color: #f8fafc;
-}
-
-.secretaries-status {
-  display: inline-flex;
-
-  padding: 0.3rem 0.65rem;
-
-  border-radius: 999px;
-
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.secretaries-status-active {
-  background-color: #dcfce7;
-  color: #166534;
-}
-
-.secretaries-status-inactive {
-  background-color: #f1f5f9;
-  color: #64748b;
-}
-
-.secretaries-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.secretaries-action-button {
-  padding: 0.5rem 0.75rem;
-
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-
-  background-color: #ffffff;
-  color: #334155;
-
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-.secretaries-action-button:hover {
-  background-color: #f1f5f9;
-}
-
-.secretaries-action-button-danger {
-  border-color: #fecaca;
-  color: #991b1b;
-}
-
-.secretaries-action-button-danger:hover {
-  background-color: #fef2f2;
-}
-
-.secretaries-action-button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
 @media (max-width: 768px) {
-  .secretaries-form {
-    grid-template-columns: 1fr;
+  .student-cv-section {
+    padding: 1.25rem;
   }
 
-  .secretaries-search {
-    flex-direction: column;
-  }
-
-  .secretaries-form-actions {
-    flex-direction: column;
-  }
-
-  .secretaries-form-actions .private-primary-button,
-  .secretaries-form-actions .private-secondary-button {
-    width: 100%;
-  }
-}
-
-.evaluation-summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-
-  margin-bottom: 2rem;
-}
-
-.evaluation-summary-item {
-  padding: 1rem 1.25rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-
-  background-color: #f8fafc;
-}
-
-.evaluation-summary-label {
-  color: #64748b;
-
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.evaluation-summary-value {
-  color: #1f2937;
-
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.evaluation-table-container {
-  width: 100%;
-
-  overflow-x: auto;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-}
-
-.evaluation-table {
-  width: 100%;
-
-  border-collapse: collapse;
-
-  background-color: #ffffff;
-}
-
-.evaluation-table th,
-.evaluation-table td {
-  padding: 0.9rem 1rem;
-
-  border-bottom: 1px solid #e5e7eb;
-
-  text-align: left;
-  vertical-align: middle;
-}
-
-.evaluation-table th {
-  background-color: #f8fafc;
-  color: #475569;
-
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.evaluation-table td {
-  color: #1f2937;
-
-  font-size: 0.9rem;
-}
-
-.evaluation-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.evaluation-table tbody tr:hover {
-  background-color: #f8fafc;
-}
-
-@media (max-width: 768px) {
-  .evaluation-summary {
-    grid-template-columns: 1fr;
+  .student-cv-file {
+    align-items: flex-start;
+    padding: 1rem;
   }
 }
