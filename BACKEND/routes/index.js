@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const authRoutes = require("./auth.routes");
@@ -6,69 +7,74 @@ const secretarioRoutes = require("./secretario.routes");
 const passwordResetRoutes = require("./passwordReset.routes");
 const postulacionRoutes = require("./postulacion.routes");
 
-const router = express.Router();
+// HU04 - Convocatorias elegibles
+const convocatoriaRoutes = require("./convocatoria.routes");
 
+const router = express.Router();
 
 /* ============================================================
    HEALTH CHECK
    ============================================================ */
 
 router.get("/health", (req, res) => {
-    res.status(200).json({
-        ok: true,
-        message: "API de SIGAB funcionando correctamente",
-    });
+  res.status(200).json({
+    ok: true,
+    message: "API de SIGAB funcionando correctamente",
+  });
 });
-
 
 /* ============================================================
    AUTENTICACION
    ============================================================ */
 
 router.use(
-    "/auth",
-    authRoutes
+  "/auth",
+  authRoutes
 );
-
 
 /* ============================================================
    ESTUDIANTES
    ============================================================ */
 
 router.use(
-    "/estudiantes",
-    estudianteRoutes
+  "/estudiantes",
+  estudianteRoutes
 );
-
 
 /* ============================================================
    SECRETARIOS
    ============================================================ */
 
 router.use(
-    "/secretarios",
-    secretarioRoutes
+  "/secretarios",
+  secretarioRoutes
 );
-
 
 /* ============================================================
    RECUPERACION DE CONTRASENA
    ============================================================ */
 
 router.use(
-    "/password-reset",
-    passwordResetRoutes
+  "/password-reset",
+  passwordResetRoutes
 );
 
-
 /* ============================================================
-   POSTULACIONES / EVALUACION
+   POSTULACIONES / EVALUACION - HU03
    ============================================================ */
 
 router.use(
-    "/postulaciones",
-    postulacionRoutes
+  "/postulaciones",
+  postulacionRoutes
 );
 
+/* ============================================================
+   CONVOCATORIAS ELEGIBLES - HU04
+   ============================================================ */
+
+router.use(
+  "/convocatorias",
+  convocatoriaRoutes
+);
 
 module.exports = router;

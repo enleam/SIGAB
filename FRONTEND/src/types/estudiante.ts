@@ -1,3 +1,4 @@
+
 export interface Facultad {
   id: number;
   nombre: string;
@@ -20,4 +21,8 @@ export interface PerfilEstudiante {
 
   ciclo: number;
   telefono: string | null;
+
+  // HU04 - Estado de completitud del perfil
+  perfilCompleto: boolean;
+  camposFaltantes: string[];
 }
